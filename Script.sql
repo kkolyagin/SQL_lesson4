@@ -19,3 +19,11 @@ right join
 right join (select  c.departmentid, max(c.salary) as maxsalary  from employees c group by c.departmentid) x
 on d.id = x.departmentid) y
 on c1.salary = y.maxsalary; 
+
+--f.      *Выведите название отдела, сотрудники которого получат наибольшую премию по итогам года. Как рассчитать премию можно узнать в последнем задании предыдущей домашней работы
+
+select y.title as department from (select d.title, sum(c.ratio) as rbonus from customers c 
+left join departments d on c.departmentid=d.id 
+group by d.id order by rbonus desc fetch first 1 rows only) y
+
+--g.    *Проиндексируйте зарплаты сотрудников с учетом коэффициента премии. Для сотрудников с коэффициентом премии больше 1.2 – размер индексации составит 20%, для сотрудников с коэффициентом премии от 1 до 1.2 размер индексации составит 10%. Для всех остальных сотрудников индексация не предусмотрена.
