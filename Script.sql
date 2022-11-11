@@ -174,7 +174,7 @@ delta_salary as (--xxi.     Разницу в % между предыдущим�
 				order by e.departmentid)
 	select stit.departmentid, (stt.sum_total/stit.sum_total_indexed)*100 as delta_percent from sum_total_indexed_table stit, sum_total_table stt
 		where stit.departmentid=stt.departmentid)
-select d.id as departmentid, d.title, d.fiochief, d.employeescount,  ms.middle_stage,
+select d.title, d.fiochief, d.employeescount,  ms.middle_stage,
 	jct.junior_count, mct.middle_count, sct.senior_count, lct.lead_count,
 	sum_salary, ssit.sum_salary_indexed,
 	cgat.grade_a_count, cgbt.grade_b_count, cgct.grade_c_count, cgdt.grade_d_count, cget.grade_e_count,
